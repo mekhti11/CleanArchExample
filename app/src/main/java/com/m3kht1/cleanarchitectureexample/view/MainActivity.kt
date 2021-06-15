@@ -22,7 +22,10 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(CountriesViewModel::class.java)
         viewModel.refresh()
 
-        swipeRefreshLayout.setOnRefreshListener {  }
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = false
+            viewModel.refresh()
+        }
 
         countriesRV.apply {
             layoutManager = LinearLayoutManager(context)
