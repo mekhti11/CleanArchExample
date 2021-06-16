@@ -1,6 +1,7 @@
 package com.m3kht1.cleanarchitectureexample.di
 
 import com.m3kht1.cleanarchitectureexample.model.CountriesAPI
+import com.m3kht1.cleanarchitectureexample.services.CountriesService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -21,5 +22,10 @@ class ApiModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(CountriesAPI::class.java)
+    }
+
+    @Provides
+    fun provideCountriesService():CountriesService{
+        return CountriesService()
     }
 }
